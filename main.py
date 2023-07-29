@@ -21,7 +21,8 @@ class Downloader:
 
     def prepare_for_downloading(self):  # функция получает список с ссылками на куски видео
         print('Идёт подготовка к скачиванию фильма...')
-        os.mkdir('movies')
+        if not os.path.isdir('movies'):
+            os.mkdir('movies')
         options_chrome = uc.ChromeOptions()
         options_chrome.add_argument('--headless')
         with uc.Chrome(options=options_chrome) as browser:
